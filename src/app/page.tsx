@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Bot, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
 import { SCORECARD_STORAGE_KEY } from '@/lib/constants';
 
 export default function Home() {
@@ -45,11 +45,11 @@ export default function Home() {
           Welcome to Baobab Golf
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-          Your modern companion for tracking golf scores, with a little help from AI.
+          Your modern companion for tracking golf scores.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+      <div className="w-full max-w-xs">
         <Card className="bg-card/50 hover:bg-card/80 transition-colors">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -61,25 +61,8 @@ export default function Home() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Button onClick={handleNewGame} className="w-full" variant="secondary">
+            <Button onClick={handleNewGame} className="w-full">
               Start Scoring
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-card/50 hover:bg-card/80 transition-colors">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Bot className="text-accent" />
-              AI Score Estimator
-            </CardTitle>
-            <CardDescription>
-              Estimate a player's score based on various factors.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button asChild className="w-full" variant="secondary">
-              <Link href="/ai-estimator">Launch Estimator</Link>
             </Button>
           </CardContent>
         </Card>
