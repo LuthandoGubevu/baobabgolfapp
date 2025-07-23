@@ -1,6 +1,6 @@
 {
   "name": "Baobab Golf",
-  "short_name": "Golf App",
+  "short_name": "Baobab Golf ",
   "description": "A modern golf scorecard application.",
   "start_url": "/",
   "display": "standalone",
