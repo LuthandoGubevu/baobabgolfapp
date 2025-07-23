@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, BarChart2, History, LogOut } from 'lucide-react';
+import { Home, BarChart2, History, LogOut, BrainCircuit } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // Custom Golf icon as Lucide doesn't have one
@@ -20,7 +20,7 @@ const navItems = [
   { href: '/leaderboard', icon: BarChart2, label: 'Leaderboard' },
   { href: '/games/new', icon: GolfIcon, label: 'New Game', isCentral: true },
   { href: '/games', icon: History, label: 'History' },
-  { href: '/logout', icon: LogOut, label: 'Logout' },
+  { href: '/ai-estimator', icon: BrainCircuit, label: 'AI' },
 ];
 
 export default function BottomNavBar() {
