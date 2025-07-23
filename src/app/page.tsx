@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main 
       className="relative flex min-h-screen flex-col items-center justify-center p-4 sm:p-8 bg-cover bg-center"
-      style={{ backgroundImage: "url('/background-add-hope.jpg')" }}
+      style={{ backgroundImage: "url('/put.jpg')" }}
     >
       <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
       <div className="relative z-10 flex flex-col items-center text-center mb-12">
