@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import ConditionalNavBar from '@/components/ConditionalNavBar';
+import ConditionalBackground from '@/components/ConditionalBackground';
 
 export const metadata: Metadata = {
   title: 'Baobab Golf',
@@ -21,7 +22,8 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></link>
       </head>
       <body className="font-body antialiased min-h-screen bg-background flex flex-col">
-        <div className="flex-grow pb-20">
+        <ConditionalBackground />
+        <div className="flex-grow pb-20 z-10">
             {children}
         </div>
         <ConditionalNavBar />
