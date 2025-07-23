@@ -1,7 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import BottomNavBar from '@/components/BottomNavBar';
+import ConditionalNavBar from '@/components/ConditionalNavBar';
 
 export const metadata: Metadata = {
   title: 'Baobab Golf',
@@ -24,7 +24,7 @@ export default function RootLayout({
         <div className="flex-grow pb-20">
             {children}
         </div>
-        <BottomNavBar />
+        <ConditionalNavBar />
         <Toaster />
       </body>
     </html>
