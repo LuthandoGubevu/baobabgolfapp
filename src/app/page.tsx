@@ -32,7 +32,7 @@ export default function Home() {
           />
         </div>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-          Welcome to Baobab Golf
+          Baobab Golf
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
           Your modern companion for tracking golf scores.
