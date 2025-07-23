@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useMemo } from 'react';
@@ -92,7 +93,7 @@ export default function HoleScorecard({ holeNumber }: HoleScorecardProps) {
                       placeholder="-"
                     />
                     {isBestScore && (
-                        <Trophy className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary" />
+                        <Trophy className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary" />
                     )}
                   </div>
                 </div>
