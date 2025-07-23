@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import ConditionalNavBar from '@/components/ConditionalNavBar';
 import ConditionalBackground from '@/components/ConditionalBackground';
+import InstallPwa from '@/components/InstallPwa';
 
 export const metadata: Metadata = {
   title: 'Baobab Golf',
@@ -24,6 +25,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased min-h-screen bg-background flex flex-col">
         <ConditionalBackground />
+        <InstallPwa />
         <div className="flex-grow pb-20 z-10">
             {children}
         </div>
