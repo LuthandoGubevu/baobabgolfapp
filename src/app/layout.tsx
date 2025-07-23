@@ -7,7 +7,6 @@ import ConditionalBackground from '@/components/ConditionalBackground';
 export const metadata: Metadata = {
   title: 'Baobab Golf',
   description: 'A modern golf scorecard application.',
-  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
