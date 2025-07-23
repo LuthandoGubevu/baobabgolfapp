@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   const router = useRouter();
@@ -36,9 +37,12 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="relative z-10 w-full max-w-xs">
+      <div className="relative z-10 w-full max-w-xs space-y-4">
           <Button onClick={handleStart} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
               Start
+          </Button>
+          <Button variant="secondary" className="w-full" asChild>
+            <Link href="/teams/register">Register New Team</Link>
           </Button>
       </div>
     </main>
