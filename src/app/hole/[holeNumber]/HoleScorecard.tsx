@@ -11,7 +11,7 @@ import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
-import { PLAYERS, TOTAL_HOLES } from '@/lib/constants';
+import { PLAYERS } from '@/lib/constants';
 import { ArrowLeft, ArrowRight, Trophy } from 'lucide-react';
 
 type HoleScorecardProps = {
@@ -20,12 +20,17 @@ type HoleScorecardProps = {
 
 export default function HoleScorecard({ holeNumber }: HoleScorecardProps) {
   const router = useRouter();
-  const { scorecard, isLoaded, updateScore, getBestScoresForHole, getTeamTotalForHole, getTotalTeamScore } = useScorecard();
+  const { scorecard, isLoaded, totalHoles, updateScore, getBestScoresForHole, getTeamTotalForHole, getTotalTeamScore } = useScorecard();
   const holeIndex = holeNumber - 1;
 
   useEffect(() => {
     if (isLoaded && (!scorecard || !scorecard[holeIndex])) {
-      router.push('/');
+      // maybe the game ended, go to summary
+      if (scorecard.length > 0) {
+        router.push('/summary');
+      } else {
+        router.push('/');
+      }
     }
   }, [isLoaded, scorecard, holeIndex, router]);
 
@@ -104,7 +109,7 @@ export default function HoleScorecard({ holeNumber }: HoleScorecardProps) {
           <Button variant="outline" asChild disabled={holeNumber <= 1}>
             <Link href={`/hole/${holeNumber - 1}`}><ArrowLeft className="mr-2 h-4 w-4" /> Previous</Link>
           </Button>
-          {holeNumber < TOTAL_HOLES ? (
+          {holeNumber < totalHoles ? (
             <Button asChild>
               <Link href={`/hole/${holeNumber + 1}`}>Next <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>

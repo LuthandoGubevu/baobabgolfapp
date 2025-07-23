@@ -6,22 +6,35 @@ import { Scorecard, getInitialScores, SCORECARD_STORAGE_KEY } from '@/lib/consta
 export const useScorecard = () => {
   const [scorecard, setScorecard] = useState<Scorecard>([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [totalHoles, setTotalHoles] = useState(18);
 
   useEffect(() => {
     try {
+      const storedHoleCount = localStorage.getItem('baobab-golf-hole-count');
+      const holeCount = storedHoleCount ? parseInt(storedHoleCount, 10) : 18;
+      setTotalHoles(holeCount === 9 ? 9 : 18);
+
       const storedScores = localStorage.getItem(SCORECARD_STORAGE_KEY);
       if (storedScores) {
-        setScorecard(JSON.parse(storedScores));
+        const parsedScores = JSON.parse(storedScores);
+        // Ensure stored scorecard matches hole count
+        if (parsedScores.length === holeCount) {
+            setScorecard(parsedScores);
+        } else {
+            // If mismatch, generate a new one
+            setScorecard(getInitialScores(holeCount));
+        }
       } else {
-        setScorecard(getInitialScores());
+        setScorecard(getInitialScores(holeCount));
       }
     } catch (error) {
       console.error("Failed to load scores from local storage", error);
-      setScorecard(getInitialScores());
+      const holeCount = totalHoles === 9 ? 9 : 18;
+      setScorecard(getInitialScores(holeCount));
     } finally {
         setIsLoaded(true);
     }
-  }, []);
+  }, [totalHoles]);
 
   useEffect(() => {
     if (scorecard.length > 0 && isLoaded) {
@@ -67,18 +80,21 @@ export const useScorecard = () => {
   }, [scorecard, getTeamTotalForHole]);
 
   const resetScores = useCallback(() => {
-    const initialScores = getInitialScores();
+    const holeCount = totalHoles === 9 ? 9 : 18;
+    const initialScores = getInitialScores(holeCount);
     setScorecard(initialScores);
     try {
       localStorage.setItem(SCORECARD_STORAGE_KEY, JSON.stringify(initialScores));
+      localStorage.setItem('baobab-golf-hole-count', holeCount.toString());
     } catch (error) {
       console.error("Failed to reset scores in local storage", error);
     }
-  }, []);
+  }, [totalHoles]);
 
   return { 
     scorecard, 
-    isLoaded, 
+    isLoaded,
+    totalHoles,
     updateScore, 
     getBestScoresForHole,
     getTeamTotalForHole, 

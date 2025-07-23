@@ -28,8 +28,9 @@ export const HOLES_DATA: HoleData[] = [
   { hole: 18, par: 4 },
 ];
 
-export const getInitialScores = (): Scorecard => {
-  return HOLES_DATA.map(holeData => ({
+export const getInitialScores = (numberOfHoles: 9 | 18 = 18): Scorecard => {
+  const holes = HOLES_DATA.slice(0, numberOfHoles);
+  return holes.map(holeData => ({
     ...holeData,
     scores: PLAYERS.reduce((acc, player) => {
       acc[player] = null;

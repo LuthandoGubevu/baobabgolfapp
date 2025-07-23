@@ -10,6 +10,8 @@ type HolePageProps = {
 };
 
 export function generateStaticParams() {
+  // We can't know at build time if it will be 9 or 18 holes,
+  // but we must generate static pages. We'll generate for the max.
   return Array.from({ length: TOTAL_HOLES }, (_, i) => ({
     holeNumber: (i + 1).toString(),
   }));
