@@ -12,8 +12,12 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8">
-      <div className="flex flex-col items-center text-center mb-12">
+    <main 
+      className="relative flex min-h-screen flex-col items-center justify-center p-4 sm:p-8 bg-cover bg-center"
+      style={{ backgroundImage: "url('/background-add-hope.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      <div className="relative z-10 flex flex-col items-center text-center mb-12">
         <Image
           src="/add-hope.png"
           alt="Baobab Golf Logo"
@@ -29,7 +33,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="w-full max-w-xs">
+      <div className="relative z-10 w-full max-w-xs">
           <Button onClick={handleStart} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
               Start
           </Button>
