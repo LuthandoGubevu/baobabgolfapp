@@ -11,12 +11,8 @@ import { SCORECARD_STORAGE_KEY } from '@/lib/constants';
 export default function Home() {
   const router = useRouter();
 
-  const handleNewGame = () => {
-    // Clear previous game data from local storage
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem(SCORECARD_STORAGE_KEY);
-    }
-    router.push('/hole/1');
+  const handleStart = () => {
+    router.push('/dashboard');
   };
 
   return (
@@ -40,22 +36,9 @@ export default function Home() {
       </div>
 
       <div className="w-full max-w-xs">
-        <Card className="bg-card/50 hover:bg-card/80 transition-colors">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Play className="text-accent" />
-              New Game
-            </CardTitle>
-            <CardDescription>
-              Start a fresh 18-hole game for you and your team.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button onClick={handleNewGame} className="w-full">
-              Start Scoring
-            </Button>
-          </CardContent>
-        </Card>
+          <Button onClick={handleStart} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+              Start
+          </Button>
       </div>
     </main>
   );

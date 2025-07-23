@@ -24,7 +24,6 @@ export default function HolePage({ params }: HolePageProps) {
 
   return (
     <>
-      <Header />
       <main className="container mx-auto p-4 sm:p-8">
         <HoleScorecard holeNumber={holeNumber} />
       </main>
